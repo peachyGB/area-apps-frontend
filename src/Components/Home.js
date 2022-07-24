@@ -4,23 +4,21 @@ import React, { useState } from "react";
 function Home({ setSearchResults }) {
   const [zip, setzip] = useState("");
 
-  // SHORTENS KEY NAME
-  let key = process.env.REACT_APP_PTV_KEY;
-
-  // SENDS ZIP TO API, RETURNS COORDS
+  // SENDS ZIP TO BACKEND, RETURNS NEARBY APPS, BRINGS USER TO RESULTS PAGE
   function handleSubmit(e) {
     e.preventDefault();
     console.log(zip);
 
     fetch(`http://localhost:3000/places/${zip}`)
       .then((r) => r.json())
-      .then((results) => setSearchResults(results));
+      .then((results) => setSearchResults(results))
+      .then((window.location.href = "http://localhost:6900/search"));
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="fname">First name:</label>
+        <label htmlFor="fname">Enter your zip/postal code:</label>
         <br />
         <input
           type="text"
