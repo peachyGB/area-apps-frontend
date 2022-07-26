@@ -11,10 +11,12 @@ function Home({ setSearchResults }) {
 
     fetch(`http://localhost:3000/places/${zip}`)
       .then((r) => r.json())
-      .then((results) => setSearchResults(results))
-      .then((window.location.href = "http://localhost:6900/search"));
+      .then((results) => setSearchResults(results));
+    //.then((window.location.href = "http://localhost:6900/search"));
   }
-
+  function handleClick() {
+    window.location.href = "http://localhost:6900/search";
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -30,6 +32,7 @@ function Home({ setSearchResults }) {
         <br />
         <input type="submit" value="Search" />
       </form>
+      <button onClick={handleClick}>See Results!</button>
     </div>
   );
 }
