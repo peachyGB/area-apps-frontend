@@ -4,7 +4,7 @@ import Header from "./Components/Header";
 import React, { useState, useEffect } from "react";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(1);
 
   function onLogout() {
     setUser(null);

@@ -18,7 +18,7 @@ function Pages({ setUser, user }) {
           <Results searchResults={searchResults} zip={zip} />
         </Route>
         <Route path="/bookmarks">
-          <Bookmarks />
+          <Bookmarks user={user} />
         </Route>
         <Route path="/contact">
           <Contact />
