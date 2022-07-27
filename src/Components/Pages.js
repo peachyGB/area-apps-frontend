@@ -7,13 +7,15 @@ import SignUp from "./SignUp";
 import { Switch, Route } from "react-router-dom";
 
 function Pages({ setUser, user }) {
-  const [searchResults, setSearchResults] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
+  const [zip, setZip] = useState("");
+  // console.log(searchResults);
 
   return (
     <div>
       <Switch>
         <Route path="/search">
-          <Results searchResults={searchResults} />
+          <Results searchResults={searchResults} zip={zip} />
         </Route>
         <Route path="/bookmarks">
           <Bookmarks />
@@ -25,7 +27,7 @@ function Pages({ setUser, user }) {
           <SignUp setUser={setUser} user={user} />
         </Route>
         <Route exact path="/">
-          <Home setSearchResults={setSearchResults} />
+          <Home setSearchResults={setSearchResults} zip={zip} setZip={setZip} />
         </Route>
       </Switch>
     </div>

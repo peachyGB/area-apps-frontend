@@ -1,22 +1,21 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 // RECIVES THE US ZIPCODE AND SENDS IT TO BACKEND FOR API FETCHING
 
-function Home({ setSearchResults }) {
-  const [zip, setzip] = useState("");
+function Home({ setSearchResults, zip, setZip }) {
+  let history = useHistory(); //can this be simply used in the .then ?
 
   // SENDS ZIP TO BACKEND, RETURNS NEARBY APPS, BRINGS USER TO RESULTS PAGE
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(zip);
+    // console.log(zip);
 
     fetch(`http://localhost:3000/places/${zip}`)
       .then((r) => r.json())
-      .then((results) => setSearchResults(results));
-    //.then((window.location.href = "http://localhost:6900/search"));
+      .then((results) => setSearchResults(results))
+      .then(history.push("/search"));
   }
-  function handleClick() {
-    window.location.href = "http://localhost:6900/search";
-  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -27,16 +26,12 @@ function Home({ setSearchResults }) {
           id="fname"
           placeholder="zip code"
           value={zip}
-          onChange={(e) => setzip(e.target.value)}
+          onChange={(e) => setZip(e.target.value)}
         />
         <br />
         <input type="submit" value="Search" />
       </form>
-      <button onClick={handleClick}>See Results!</button>
     </div>
   );
 }
-
 export default Home;
-
-// holds search bar and submit button to trigger fetch
