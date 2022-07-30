@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Home from "./Home";
 import Results from "./Results";
 import Bookmarks from "./Bookmarks";
@@ -9,16 +9,22 @@ import { Switch, Route } from "react-router-dom";
 function Pages({ setUser, user }) {
   const [searchResults, setSearchResults] = useState([]);
   const [zip, setZip] = useState("");
-  // console.log(searchResults);
+  const [userInt, setUserInt] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/users/${user}/interactions`)
+      .then((response) => response.json())
+      .then((info) => setUserInt(info));
+  }, []);
 
   return (
     <div>
       <Switch>
         <Route path="/search">
-          <Results searchResults={searchResults} zip={zip} />
+          <Results searchResults={searchResults} zip={zip} userInt={userInt} />
         </Route>
         <Route path="/bookmarks">
-          <Bookmarks user={user} />
+          <Bookmarks user={user} pageInfo={userInt} setPageInfo={setUserInt} />
         </Route>
         <Route path="/contact">
           <Contact />

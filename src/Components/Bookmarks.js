@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
-
 import ButtonsBar from "./ButtonsBar";
 
-function Bookmarks({ user }) {
-  const [pageInfo, setPageInfo] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:3000/users/${user}/interactions`)
-      .then((response) => response.json())
-      .then((info) => setPageInfo(info));
-  }, []);
+function Bookmarks({ user, pageInfo, setPageInfo }) {
   // may exclude unbookmarked ones, may not
 
   // UPDATES BUTTON INFO ON PAGE AFTER THE POST
