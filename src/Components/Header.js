@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 function Header({ onLogin, onLogout, user }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [menuActive, setMenuActive] = useState(false);
+  const [loginView, setLoginView] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,20 +33,58 @@ function Header({ onLogin, onLogout, user }) {
     }).then(() => onLogout());
   }
 
+  function showLogin() {
+    setLoginView(!loginView);
+    console.log("hi");
+  }
+
+  function menuToggle() {
+    setMenuActive(true);
+  }
+  function off() {
+    setMenuActive(false);
+  }
+
   if (user) {
     return (
-      <div id="header">
-        <h1 id="logo">AreaApp</h1>
-        <NavBar />
-        <button onClick={handleLogout}>Logout</button>
+      <div
+        id="header"
+        className={menuActive ? "active" : "inactive"}
+        onMouseOver={menuToggle}
+        onMouseLeave={off}
+      >
+        <img id="logo-icon" alt="logo-icon" src="/Icons/logo.png" />
+        <div id="logo" className={menuActive ? "show" : "hide"}>
+          AreaApps
+        </div>
+        <NavBar menuActive={menuActive} />
+        <div id="log-out" onClick={handleLogout}>
+          <img alt="log-out" src="/Icons/logout.png" />
+          <span className={menuActive ? "show" : "hide"}>Logout</span>
+        </div>
       </div>
     );
   } else {
     return (
-      <div id="header">
-        <h1 id="logo">AreaApp</h1>
-        <NavBar />
-        <form onSubmit={handleSubmit}>
+      <div
+        id="header"
+        className={menuActive ? "active" : "inactive"}
+        onMouseOver={menuToggle}
+        onMouseLeave={off}
+      >
+        <img id="logo-icon" alt="logo-icon" src="/Icons/logo.png" />
+        <h1 id="logo" className={menuActive ? "show" : "hide"}>
+          AreaApp
+        </h1>
+        <NavBar menuActive={menuActive} />
+        <form
+          id="login-form"
+          onSubmit={handleSubmit}
+          style={
+            loginView ? { visibility: "visible" } : { visibility: "hidden" }
+          }
+          className={menuActive ? "show" : "hide"}
+        >
           <label htmlFor="username">Username:</label>
           <br />
           <input
@@ -67,9 +107,23 @@ function Header({ onLogin, onLogout, user }) {
           <br />
           <input type="submit" value="Submit"></input>
         </form>
-        <Link exact to="/signup">
-          <input type="button" value="Sign Up"></input>
+        <br />
+        <Link exact to="/signup" className={menuActive ? "show" : "hide"}>
+          <input
+            id="signup"
+            type="button"
+            value="Sign Up"
+            style={
+              loginView ? { visibility: "visible" } : { visibility: "hidden" }
+            }
+          ></input>
         </Link>
+        <div id="log-in">
+          <div className={menuActive ? "show" : "hide"} onClick={showLogin}>
+            Log in / Sign Up
+          </div>
+          <img alt="log-in" src="/Icons/login.png" onClick={showLogin} />
+        </div>
       </div>
     );
   }

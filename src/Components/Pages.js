@@ -18,7 +18,7 @@ function Pages({ setUser, user }) {
   }, []);
 
   return (
-    <div>
+    <div id="pages">
       <Switch>
         <Route path="/search">
           <Results searchResults={searchResults} zip={zip} userInt={userInt} />
