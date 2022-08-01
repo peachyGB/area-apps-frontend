@@ -1,7 +1,6 @@
 import React from "react";
 import BusinessCards from "./BusinessCards";
 import CategoryFilters from "./CategoryFilters";
-import MapView from "./MapView";
 
 function Results({ searchResults, zip, userInt }) {
   console.log(searchResults);
@@ -19,11 +18,11 @@ function Results({ searchResults, zip, userInt }) {
   ));
 
   return (
-    <div>
-      Results near: {zip}
+    <div id="results-page">
+      <div> Results near: {zip} </div>
+      <br />
       {/* <CategoryFilters /> */}
       {businessBoys}
-      {/* <MapView /> */}
     </div>
   );
 }

@@ -101,8 +101,8 @@ function ButtonsBar({
   //     });
   // }
   return (
-    <div className="interaction-bar">
-      <div>
+    <div>
+      <div className="interaction-bar">
         <img
           id="bookmark"
           alt="bookmark-icon"

@@ -5,6 +5,7 @@ import Bookmarks from "./Bookmarks";
 import Contact from "./Contact";
 import SignUp from "./SignUp";
 import { Switch, Route } from "react-router-dom";
+import "../Pages.css";
 
 function Pages({ setUser, user }) {
   const [searchResults, setSearchResults] = useState([]);

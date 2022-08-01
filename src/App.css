@@ -1,17 +1,27 @@
 .App {
   text-align: left;
-  background-color: rgb(229, 229, 229);
   position: relative;
   min-height: 100vh;
   width: 100%;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#background {
+  position: absolute;
+  z-index: -100;
+  background-color: rgb(244, 244, 244);
+  /* height: 100%; */
+  width: 110%;
+  opacity: 0.2;
 }
 #logo-icon {
   width: 100px;
+  background-color: rgba(255, 255, 255, 0.044);
+  border-radius: 50px;
 }
 
 .active {
-  background-color: rgb(0, 63, 135);
+  background-color: rgb(13, 20, 18);
   position: fixed;
   top: 0;
   left: 0;
@@ -22,7 +32,7 @@
 }
 
 .inactive {
-  background-color: rgb(0, 63, 135);
+  background-color: rgb(13, 20, 18);
   position: fixed;
   top: 0;
   left: 0;
@@ -90,14 +100,21 @@
 
 #log-out {
   text-align: left;
-  padding: 20px;
+  /* padding: 20px; */
+  margin: 20px;
   position: absolute;
   bottom: 0;
   font-size: 25px;
   font-weight: 500;
-  color: black;
+  color: #0d6efd;
 }
-
+#log-out img:hover {
+  background-color: rgb(72, 168, 252);
+  border-radius: 12px;
+}
+#log-out span {
+  margin: 10px;
+}
 #log-out img {
   height: 50px;
   margin: 10px;
@@ -106,13 +123,16 @@
 #log-in {
   text-align: left;
   padding: 20px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   font-size: 25px;
   font-weight: 500;
-  color: black;
+  color: #0d6efd;
 }
-
+#log-in img:hover {
+  background-color: rgb(72, 168, 252);
+  border-radius: 12px;
+}
 #login-form {
   position: fixed;
   top: 500px;
@@ -120,17 +140,34 @@
 }
 #signup {
   position: fixed;
-  top: 700px;
+  top: 750px;
   left: 40px;
 }
 
-#pages {
-  position: fixed;
-  text-align: center;
-  width: 100%;
-  left: 10%;
-  top: 200px;
-}
 #header {
   z-index: 100;
+}
+
+#login-form {
+  color: #0d6efd;
+  width: 40px;
+  font-size: 20px;
+  transition: all 0.25s ease;
+}
+
+#login-form input,
+#signup {
+  width: 200px;
+  border-radius: 12px;
+  color: #0d6efd;
+  font-size: 20px;
+  text-align: center;
+}
+#signup {
+  transition: all 0.25s ease;
+}
+
+#login-form label {
+  color: #0d6efd;
+  text-align: center;
 }

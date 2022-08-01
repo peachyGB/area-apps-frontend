@@ -17,18 +17,20 @@ function Home({ setSearchResults, zip, setZip }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="fname">Enter your zip/postal code:</label>
+      <form id="zip-search" onSubmit={handleSubmit}>
+        <label htmlFor="search-field">Enter your zip/postal code:</label>
         <br />
-        <input
-          type="text"
-          id="fname"
-          placeholder="zip code"
-          value={zip}
-          onChange={(e) => setZip(e.target.value)}
-        />
         <br />
-        <input type="submit" value="Search" />
+        <div id="search-bar">
+          <input
+            type="text"
+            id="search-field"
+            placeholder="zip code"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+          />
+          <input id="search-btn" type="submit" value="Search" />
+        </div>
       </form>
     </div>
   );

@@ -32,12 +32,12 @@ function ResultsButtons({ appName, icon, playStore, userInt, busName }) {
 
   return (
     <div>
-      <div>
+      <div className="resuls-btn">
         <img
           id="bookmark"
           alt="bookmark-icon"
           // src={bkmrk ? "/Icons/bookmark-true.png" : "/Icons/bookmark-false.png"}
-          src="/Icons/bookmark-true.png"
+          src="/Icons/bookmark-false.png"
           onClick={bookmarkClick}
         />
 
@@ -45,7 +45,7 @@ function ResultsButtons({ appName, icon, playStore, userInt, busName }) {
           id="download"
           alt="download-icon"
           src={
-            "/Icons/download-true.png"
+            "/Icons/download-false.png"
             // set both images to true for now. not posting to back end
             // download ? "/Icons/download-true.png" : "/Icons/download-true.png"
           }
@@ -57,7 +57,7 @@ function ResultsButtons({ appName, icon, playStore, userInt, busName }) {
         <img
           id="report"
           alt="error-icon"
-          src="/Icons/err-true.png"
+          src="/Icons/err-false.png"
           // src={err_report ? "/Icons/err-true.png" : "/Icons/err-false.png"}
           onClick={errClick}
         />

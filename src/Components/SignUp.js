@@ -30,7 +30,7 @@ function SignUp({ user, setUser }) {
   } else {
     return (
       <div>
-        <form onSubmit={handleSignUp}>
+        <form id="signup-form" onSubmit={handleSignUp}>
           <label htmlFor="username">Create Username:</label>
           <br />
           <input
@@ -41,7 +41,7 @@ function SignUp({ user, setUser }) {
           />
           <br />
           <br />
-          <label htmlFor="password">Create Password</label>
+          <label htmlFor="password">Create Password:</label>
           <br />
           <input
             type="password"
@@ -51,7 +51,7 @@ function SignUp({ user, setUser }) {
           />
           <br />
           <br />
-          <label htmlFor="password">Confirm Password</label>
+          <label htmlFor="password">Confirm Password:</label>
           <br />
           <input
             type="password"
@@ -61,7 +61,7 @@ function SignUp({ user, setUser }) {
           />
           <br />
           <br />
-          <input type="submit" value="Submit"></input>
+          <input id="signup-submit" type="submit" value="Submit"></input>
         </form>
       </div>
     );

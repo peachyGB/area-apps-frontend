@@ -59,7 +59,7 @@ function Header({ onLogin, onLogout, user }) {
         </div>
         <NavBar menuActive={menuActive} />
         <div id="log-out" onClick={handleLogout}>
-          <img alt="log-out" src="/Icons/logout.png" />
+          <img alt="log-out" src="/Icons/logout-w.png" />
           <span className={menuActive ? "show" : "hide"}>Logout</span>
         </div>
       </div>
@@ -94,7 +94,7 @@ function Header({ onLogin, onLogout, user }) {
             onChange={(e) => setUsername(e.target.value)}
           />
           <br />
-          <br />
+
           <label htmlFor="password">Password</label>
           <br />
           <input
@@ -119,10 +119,10 @@ function Header({ onLogin, onLogout, user }) {
           ></input>
         </Link>
         <div id="log-in">
-          <div className={menuActive ? "show" : "hide"} onClick={showLogin}>
+          <img alt="log-in" src="/Icons/login-w.png" onClick={showLogin} />
+          <span className={menuActive ? "show" : "hide"} onClick={showLogin}>
             Log in / Sign Up
-          </div>
-          <img alt="log-in" src="/Icons/login.png" onClick={showLogin} />
+          </span>
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 
 function MapView() {
-  return <div>MapView</div>;
+  return <div className="map-location">Map View Placeholder</div>;
 }
 
 export default MapView;

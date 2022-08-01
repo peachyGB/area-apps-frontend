@@ -20,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <img id="background" alt="logo-icon" src="/Icons/logo.png" />
       <Header onLogin={setUser} user={user} onLogout={onLogout} />
       <Pages setUser={setUser} user={user} />
     </div>

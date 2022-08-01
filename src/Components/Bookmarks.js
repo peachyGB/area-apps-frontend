@@ -19,11 +19,13 @@ function Bookmarks({ user, pageInfo, setPageInfo }) {
   let bookmarks = pageInfo.map((item) => {
     return (
       <div id="saved-card">
+        <img id="app-img" alt="app-image" src={item.business.appImage} />
         <br />
-        <h4>{item.business.name}</h4>
-        <div>App Name Placeholder</div>
-        <div>App Image Placeholder</div>
-        <div>{item.business.link}</div>
+        <br />
+        <div id="appName">{item.business.appName}</div>
+        <div id="bizName">{item.business.busName}</div>
+        <br />
+        {/* <div>{item.business.link}</div> */}
         <ButtonsBar
           key={item.id}
           id={item.id}
