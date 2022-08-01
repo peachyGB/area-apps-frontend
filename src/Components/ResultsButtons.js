@@ -1,26 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 
-function ResultsButtons({ appName, icon, playStore, userInt, busName }) {
+function ResultsButtons({
+  appName,
+  icon,
+  playStore,
+  userInt,
+  setUserInt,
+  busName,
+  user,
+}) {
+  const [rBookmark, setRBookmark] = useState(false);
+
   //BOOKMARK
   function bookmarkClick() {
+    setRBookmark(!rBookmark);
+
     let businessResult = {
-      busName: busName,
-      appName: appName,
-      link: playStore,
-      appImage: icon,
+      busName: busName ? busName : "",
+      appName: appName ? appName : "",
+      link: playStore ? playStore : "",
+      appImage: icon ? icon : "",
       address: "",
       category: "",
-      bookmark: true,
+      bookmark: { rBookmark },
     };
-    // users are hard coded to 1
-    fetch(`http://localhost:3000/users/1/interactions/${appName}`, {
+    console.log(user.id);
+
+    fetch(`http://localhost:3000/users/${user.id}/interactions/${appName}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(businessResult),
-    });
-    // some .thens in a bit
+    })
+      .then((r) => r.json())
+      .then((info) => updateUserInfo(info));
+  }
+
+  function updateUserInfo(info) {
+    if (userInt.length === undefined) {
+      setUserInt(info);
+    } else {
+      let idList = userInt.map((i) => {
+        return i.id;
+      });
+      console.log(idList);
+      console.log(info.id);
+      console.log(idList.includes(info.id));
+      if (idList.includes(info.id)) {
+        let theStuff = userInt.map((x) => {
+          if (info.id === x.id) {
+            return info;
+          } else {
+            return x;
+          }
+        });
+        setUserInt(theStuff);
+      } else {
+        setUserInt([...userInt, info]);
+      }
+    }
   }
 
   //DOWNLOAD
@@ -36,8 +75,9 @@ function ResultsButtons({ appName, icon, playStore, userInt, busName }) {
         <img
           id="bookmark"
           alt="bookmark-icon"
-          // src={bkmrk ? "/Icons/bookmark-true.png" : "/Icons/bookmark-false.png"}
-          src="/Icons/bookmark-false.png"
+          src={
+            rBookmark ? "/Icons/bookmark-true.png" : "/Icons/bookmark-false.png"
+          }
           onClick={bookmarkClick}
         />
 

@@ -74,7 +74,7 @@ function Header({ onLogin, onLogout, user }) {
       >
         <img id="logo-icon" alt="logo-icon" src="/Icons/logo.png" />
         <h1 id="logo" className={menuActive ? "show" : "hide"}>
-          AreaApp
+          AreaApps
         </h1>
         <NavBar menuActive={menuActive} />
         <form

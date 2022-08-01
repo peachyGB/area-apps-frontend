@@ -4,10 +4,10 @@ import Header from "./Components/Header";
 import React, { useState, useEffect } from "react";
 
 function App() {
-  const [user, setUser] = useState(1);
+  const [user, setUser] = useState(0); // <--- user cannot be 0,
 
   function onLogout() {
-    setUser(null);
+    setUser(0);
   }
 
   useEffect(() => {

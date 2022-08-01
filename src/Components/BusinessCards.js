@@ -2,8 +2,16 @@ import React from "react";
 import ResultsButtons from "./ResultsButtons";
 import MapView from "./MapView";
 
-function BusinessCards({ appName, icon, playStore, userInt, busName }) {
-  console.log(appName);
+function BusinessCards({
+  appName,
+  icon,
+  playStore,
+  userInt,
+  setUserInt,
+  busName,
+  user,
+}) {
+  // console.log(appName);
   return (
     <div className="bus-card">
       <div id="app-name">{appName} </div>
@@ -12,10 +20,12 @@ function BusinessCards({ appName, icon, playStore, userInt, busName }) {
       <img alt="app thumbnail" className="app-icon" src={icon} />
       <ResultsButtons
         userInt={userInt}
+        setUserInt={setUserInt}
         appName={appName}
         icon={icon}
         playStore={playStore}
         busName={busName}
+        user={user}
       />
       <MapView />
       <br />

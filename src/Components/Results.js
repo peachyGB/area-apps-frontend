@@ -2,7 +2,7 @@ import React from "react";
 import BusinessCards from "./BusinessCards";
 import CategoryFilters from "./CategoryFilters";
 
-function Results({ searchResults, zip, userInt }) {
+function Results({ searchResults, zip, userInt, setUserInt, user }) {
   console.log(searchResults);
   if (searchResults.length === 0) return <h2>Loading apps...</h2>;
 
@@ -14,6 +14,8 @@ function Results({ searchResults, zip, userInt }) {
       playStore={item.organic_results[0].items[0].link}
       icon={item.organic_results[0].items[0].thumbnail}
       userInt={userInt}
+      setUserInt={setUserInt}
+      user={user}
     />
   ));
 

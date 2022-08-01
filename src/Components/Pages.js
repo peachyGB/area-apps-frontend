@@ -11,18 +11,25 @@ function Pages({ setUser, user }) {
   const [searchResults, setSearchResults] = useState([]);
   const [zip, setZip] = useState("");
   const [userInt, setUserInt] = useState([]);
+  console.log(`Current user: ${user.id}`);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users/${user}/interactions`)
+    fetch(`http://localhost:3000/users/${user.id}/interactions`)
       .then((response) => response.json())
       .then((info) => setUserInt(info));
-  }, []);
+  }, [user]);
 
   return (
     <div id="pages">
       <Switch>
         <Route path="/search">
-          <Results searchResults={searchResults} zip={zip} userInt={userInt} />
+          <Results
+            searchResults={searchResults}
+            zip={zip}
+            userInt={userInt}
+            setUserInt={setUserInt}
+            user={user}
+          />
         </Route>
         <Route path="/bookmarks">
           <Bookmarks user={user} pageInfo={userInt} setPageInfo={setUserInt} />
