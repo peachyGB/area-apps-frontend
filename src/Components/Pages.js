@@ -14,9 +14,13 @@ function Pages({ setUser, user }) {
   console.log(`Current user: ${user.id}`);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users/${user.id}/interactions`)
-      .then((response) => response.json())
-      .then((info) => setUserInt(info));
+    fetch(`/users/${user.id}/interactions`).then((response) => {
+      if (response.ok) {
+        response.json().then((info) => setUserInt(info));
+      } else {
+        response.json().then((info) => setUserInt());
+      }
+    });
   }, [user]);
 
   return (
@@ -32,7 +36,13 @@ function Pages({ setUser, user }) {
           />
         </Route>
         <Route path="/bookmarks">
-          <Bookmarks user={user} pageInfo={userInt} setPageInfo={setUserInt} />
+          <div className="grid-container">
+            <Bookmarks
+              user={user}
+              pageInfo={userInt}
+              setPageInfo={setUserInt}
+            />
+          </div>
         </Route>
         <Route path="/contact">
           <Contact />

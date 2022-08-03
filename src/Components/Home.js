@@ -8,8 +8,9 @@ function Home({ setSearchResults, zip, setZip }) {
   // SENDS ZIP TO BACKEND, RETURNS NEARBY APPS, BRINGS USER TO RESULTS PAGE
   function handleSubmit(e) {
     e.preventDefault();
+    setSearchResults();
 
-    fetch(`http://localhost:3000/places/${zip}`)
+    fetch(`/places/${zip}`)
       .then((r) => r.json())
       .then((results) => setSearchResults(results))
       .then(history.push("/search"));

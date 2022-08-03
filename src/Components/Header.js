@@ -16,7 +16,7 @@ function Header({ onLogin, onLogout, user }) {
       password: password,
     };
 
-    fetch("http://localhost:3000/login", {
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function Header({ onLogin, onLogout, user }) {
   }
 
   function handleLogout() {
-    fetch("http://localhost:3000/logout", {
+    fetch("/logout", {
       method: "DELETE",
     }).then(() => onLogout());
   }

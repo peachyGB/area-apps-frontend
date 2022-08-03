@@ -10,6 +10,7 @@ function ResultsButtons({
   user,
 }) {
   const [rBookmark, setRBookmark] = useState(false);
+  const [error_report, setError_report] = useState(true);
 
   //BOOKMARK
   function bookmarkClick() {
@@ -24,9 +25,8 @@ function ResultsButtons({
       category: "",
       bookmark: { rBookmark },
     };
-    console.log(user.id);
 
-    fetch(`http://localhost:3000/users/${user.id}/interactions/${appName}`, {
+    fetch(`/${user.id}/interactions/${appName}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,9 +44,9 @@ function ResultsButtons({
       let idList = userInt.map((i) => {
         return i.id;
       });
-      console.log(idList);
-      console.log(info.id);
-      console.log(idList.includes(info.id));
+      // console.log(idList);
+      // console.log(info.id);
+      // console.log(idList.includes(info.id));
       if (idList.includes(info.id)) {
         let theStuff = userInt.map((x) => {
           if (info.id === x.id) {
@@ -65,9 +65,24 @@ function ResultsButtons({
   //DOWNLOAD
 
   //ERROR REPORT
-  function errClick() {}
+  function errClick() {
+    setError_report(!error_report);
+    fetch(`http://localhost:3000/interactions/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ error_report }),
+    })
+      .then((response) => response.json())
+      .then((item) => {
+        updateUserInfo(item);
+        console.log(item);
+      });
+  }
 
   //RATING
+  //none
 
   return (
     <div>
@@ -97,8 +112,7 @@ function ResultsButtons({
         <img
           id="report"
           alt="error-icon"
-          src="/Icons/err-false.png"
-          // src={err_report ? "/Icons/err-true.png" : "/Icons/err-false.png"}
+          src={!error_report ? "/Icons/err-true.png" : "/Icons/err-false.png"}
           onClick={errClick}
         />
         {/* <img

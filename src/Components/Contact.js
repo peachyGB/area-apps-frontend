@@ -38,6 +38,16 @@ function Contact() {
         <br />
         <input id="contact-submit" type="submit" value="Submit"></input>
       </form>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <a>All icons provided by </a>
+      <a target="_blank" href="https://icons8.com">
+        Icons8
+      </a>
     </div>
   );
 }

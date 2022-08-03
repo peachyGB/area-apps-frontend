@@ -24,7 +24,7 @@ function ButtonsBar({
   function bookmarkClick() {
     setBookmark(!bkmrk);
 
-    fetch(`http://localhost:3000/interactions/${id}`, {
+    fetch(`/interactions/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function ButtonsBar({
   //ERROR REPORT PATCH
   function errClick() {
     setError_report(!err_report);
-    fetch(`http://localhost:3000/interactions/${id}`, {
+    fetch(`/interactions/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

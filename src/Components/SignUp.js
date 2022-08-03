@@ -12,7 +12,7 @@ function SignUp({ user, setUser }) {
       password: newPassword,
       admin: false,
     };
-    fetch("http://localhost:3000/users", {
+    fetch("/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newAccount),

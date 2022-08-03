@@ -4,7 +4,13 @@ import CategoryFilters from "./CategoryFilters";
 
 function Results({ searchResults, zip, userInt, setUserInt, user }) {
   console.log(searchResults);
-  if (searchResults.length === 0) return <h2>Loading apps...</h2>;
+  if (searchResults === undefined || searchResults.length === 0)
+    return (
+      <span>
+        <h2>Loading apps...</h2>
+        <img id="loading" src="/Icons/loading.gif" alt="loading..." />
+      </span>
+    );
 
   let businessBoys = searchResults.map((item) => (
     <BusinessCards

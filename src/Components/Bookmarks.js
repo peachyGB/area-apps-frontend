@@ -15,13 +15,19 @@ function Bookmarks({ user, pageInfo, setPageInfo }) {
     });
     setPageInfo(updatedPageInfo);
   }
+  console.log(pageInfo);
+  console.log(user.id);
 
-  if (user === 0 || pageInfo.length === 0) {
-    return <h3>Please log in to view favorites</h3>;
+  if (user === 0 || pageInfo === undefined) {
+    return (
+      <h3 id="notice">
+        Please log in and start a new search to view favorites
+      </h3>
+    );
   } else {
     return pageInfo.map((item) => {
       return (
-        <div id="saved-card">
+        <div id="saved-card" key={item.id + item.user.id}>
           <img id="app-img" alt="app-image" src={item.business.appImage} />
           <br />
           <br />
@@ -30,7 +36,6 @@ function Bookmarks({ user, pageInfo, setPageInfo }) {
           <br />
           {/* <div>{item.business.link}</div> */}
           <ButtonsBar
-            key={item.id}
             id={item.id}
             link={item.business.link}
             listUpdate={listUpdate}
