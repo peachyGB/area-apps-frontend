@@ -3,7 +3,6 @@ import BusinessCards from "./BusinessCards";
 import CategoryFilters from "./CategoryFilters";
 
 function Results({ searchResults, zip, userInt, setUserInt, user }) {
-  console.log(searchResults);
   if (searchResults === undefined || searchResults.length === 0)
     return (
       <span>
@@ -12,13 +11,26 @@ function Results({ searchResults, zip, userInt, setUserInt, user }) {
       </span>
     );
 
-  let businessBoys = searchResults.map((item) => (
+  let trueResults = searchResults.filter((result) => {
+    return result.organic_results[0].title !== "Recommended for you";
+  });
+
+  //  Circle back to this
+  // let noGames = searchResults.filter((result) => {
+  //   return result.organic_results[0].includes("game");
+  // });
+  // console.log(noGames);
+
+  console.log(`Full results:`, searchResults);
+  console.log(`True results:`, trueResults);
+
+  let businessBoys = trueResults.map((item) => (
     <BusinessCards
       key={item.search_metadata.id}
       busName={item.organic_results[0].items[0].author}
       appName={item.organic_results[0].items[0].title}
       playStore={item.organic_results[0].items[0].link}
-      icon={item.organic_results[0].items[0].thumbnail}
+      icon={item.organic_results[0].items[0].thumbnail.toString()}
       userInt={userInt}
       setUserInt={setUserInt}
       user={user}
@@ -27,7 +39,7 @@ function Results({ searchResults, zip, userInt, setUserInt, user }) {
 
   return (
     <div id="results-page">
-      <div> Results near: {zip} </div>
+      <div id="location"> Results near: {zip} </div>
       <br />
       {/* <CategoryFilters /> */}
       {businessBoys}

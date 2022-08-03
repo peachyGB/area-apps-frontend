@@ -11,7 +11,7 @@ function BusinessCards({
   busName,
   user,
 }) {
-  // console.log(appName);
+  console.log(icon);
   return (
     <div className="bus-card">
       <div id="app-name">{appName} </div>
