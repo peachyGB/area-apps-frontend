@@ -15,8 +15,11 @@ function Bookmarks({ user, pageInfo, setPageInfo }) {
     });
     setPageInfo(updatedPageInfo);
   }
-  console.log(pageInfo);
-  console.log(user.id);
+  // console.log(pageInfo);
+  // console.log(user.id);
+  function defaultImg(e) {
+    e.target.src = "/Icons/icon-default.png";
+  }
 
   if (user === 0 || pageInfo === undefined) {
     return (
@@ -28,7 +31,12 @@ function Bookmarks({ user, pageInfo, setPageInfo }) {
     return pageInfo.map((item) => {
       return (
         <div id="saved-card" key={item.id + item.user.id}>
-          <img id="app-img" alt="app-image" src={item.business.appImage} />
+          <img
+            id="app-img"
+            alt="app-image"
+            src={item.business.appImage}
+            onError={defaultImg}
+          />
           <br />
           <br />
           <div id="appName">{item.business.appName}</div>

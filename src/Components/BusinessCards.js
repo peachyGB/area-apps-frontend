@@ -11,13 +11,22 @@ function BusinessCards({
   busName,
   user,
 }) {
-  console.log(icon);
+  // console.log(icon);
+
+  function defaultImg(e) {
+    e.target.src = "/Icons/icon-default.png";
+  }
+
   return (
     <div className="bus-card">
       <div id="app-name">{appName} </div>
       <div id="biz-name">{busName}</div>
-      {/* <h4 href={playStore}>Download from Play Store</h4> */}
-      <img alt="app thumbnail" className="app-icon" src={icon} />
+      <img
+        alt="app thumbnail"
+        className="app-icon"
+        src={icon}
+        onError={defaultImg}
+      />
       <ResultsButtons
         userInt={userInt}
         setUserInt={setUserInt}
@@ -27,7 +36,7 @@ function BusinessCards({
         busName={busName}
         user={user}
       />
-      <MapView />
+      {/* <MapView /> */}
       <br />
       <br />
     </div>

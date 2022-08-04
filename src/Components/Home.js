@@ -11,8 +11,8 @@ function Home({ setSearchResults, zip, setZip }) {
   function handleSubmit(e) {
     e.preventDefault();
     setSearchResults();
-    console.log(category);
-    console.log(radius);
+    // console.log(category);
+    // console.log(radius);
 
     fetch(`/places/${zip}/${radius}/${category}`)
       .then((r) => r.json())
@@ -38,13 +38,15 @@ function Home({ setSearchResults, zip, setZip }) {
         </div>
       </form>
       <br />
+      <br />
+      <br />
       <form
         id="cat-search"
         onChange={(e) => {
           setCategory(e.target.value);
         }}
       >
-        <div>Categories:</div>
+        <div className="group-label">Categories:</div>
         <span className="search-filters">
           <input
             type="radio"
@@ -53,80 +55,117 @@ function Home({ setSearchResults, zip, setZip }) {
             value=""
             defaultChecked
           />
-          <label htmlFor="all"> All </label>
+          <label htmlFor="all" className="btn">
+            {" "}
+            All{" "}
+          </label>
         </span>
         <span className="search-filters">
-          <input type="radio" id="food" name="category" value="food" />
-          <label htmlFor="food"> Food </label>
+          <input type="radio" id="food" name="category" value="restaurant" />
+          <label htmlFor="food" className="btn">
+            {" "}
+            Food{" "}
+          </label>
         </span>
         <span className="search-filters">
-          <input type="radio" id="clothing" name="category" value="clothing" />
-          <label htmlFor="clothing"> Clothing/Retail </label>
+          <input
+            type="radio"
+            id="clothing"
+            name="category"
+            value="clothing_store"
+          />
+          <label htmlFor="clothing" className="btn">
+            {" "}
+            Clothing/Retail{" "}
+          </label>
         </span>
         <span className="search-filters">
           <input type="radio" id="lodging" name="category" value="lodging" />
-          <label htmlFor="lodging"> Hotels/Lodging </label>
+          <label htmlFor="lodging" className="btn">
+            {" "}
+            Hotels/Lodging{" "}
+          </label>
         </span>
-        <span className="search-filters">
-          <input type="radio" id="grocery" name="category" value="grocery" />
-          <label htmlFor="grocery"> Grocery </label>
+        {/* <span className="search-filters">
+          <input
+            type="radio"
+            id="grocery"
+            name="category"
+            value="supermarket"
+          />
+          <label htmlFor="grocery" className="btn">
+            {" "}
+            Grocery{" "}
+          </label>
         </span>
         <span className="search-filters">
           <input type="radio" id="pharmacy" name="category" value="pharmacy" />
-          <label htmlFor="pharmacy"> Pharmacy </label>
+          <label htmlFor="pharmacy" className="btn">
+            {" "}
+            Pharmacy{" "}
+          </label>
+        </span> */}
+        <span className="search-filters">
+          <input type="radio" id="banking" name="category" value="bank" />
+          <label htmlFor="banking" className="btn">
+            {" "}
+            Banks{" "}
+          </label>
         </span>
         <span className="search-filters">
-          <input type="radio" id="banking" name="category" value="banking" />
-          <label htmlFor="banking"> Banks </label>
-        </span>
-        <span className="search-filters">
-          <input type="radio" id="to_do" name="category" value="to_do" />
-          <label htmlFor="to_do"> Tourism </label>
+          <input
+            type="radio"
+            id="to_do"
+            name="category"
+            value="tourist_attraction"
+          />
+          <label htmlFor="to_do" className="btn">
+            {" "}
+            Tourism{" "}
+          </label>
         </span>
       </form>
       <br />
-      <div>Search radius:</div>
+      <br />
+      <br />
+      <div className="group-label">Search Radius:</div>
       <form
         id="radius-selection"
         onChange={(e) => {
           setRadius(e.target.value);
         }}
       >
-        <span className="search-radius">
-          <input type="radio" id="qMile" name="radius" value="400" />
-          <label htmlFor="qMile"> .25 mi. </label>
-        </span>
-        <span className="search-radius">
-          <input type="radio" id="hMile" name="radius" value="800" />
-          <label htmlFor="hMile"> .5 mi. </label>
-        </span>
-        <span className="search-radius">
+        <span className="search-filters">
           <input
             type="radio"
-            id="oneMile"
+            id="hMile"
             name="radius"
-            value="1600"
+            value="800"
             defaultChecked
           />
+          <label htmlFor="hMile"> .5 mi. </label>
+        </span>
+        <span className="search-filters">
+          <input type="radio" id="oneMile" name="radius" value="1600" />
           <label htmlFor="oneMile"> 1 mi. </label>
         </span>
-        <span className="search-radius">
+        <span className="search-filters">
           <input type="radio" id="twoMile" name="radius" value="3200" />
           <label htmlFor="twoMile"> 2 mi. </label>
         </span>
-        <span className="search-radius">
+        <span className="search-filters">
           <input type="radio" id="fiveMile" name="radius" value="8000" />
           <label htmlFor="fiveMile"> 5 mi. </label>
         </span>
-        <span className="search-radius">
+        <span className="search-filters">
           <input type="radio" id="tenMile" name="radius" value="16000" />
           <label htmlFor="tenMile"> 10 mi. </label>
         </span>
       </form>
-      <br />
+      {/* <br />
       <br />
       <div> - Or - </div>
-      <div>Search by your location</div>
+      <div>Search by your location</div> */}
     </div>
   );
 }

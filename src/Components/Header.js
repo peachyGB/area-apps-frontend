@@ -35,7 +35,7 @@ function Header({ onLogin, onLogout, user }) {
 
   function showLogin() {
     setLoginView(!loginView);
-    console.log("hi");
+    // console.log("hi");
   }
 
   function menuToggle() {

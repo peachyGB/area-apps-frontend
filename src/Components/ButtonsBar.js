@@ -34,7 +34,7 @@ function ButtonsBar({
       .then((response) => response.json())
       .then((item) => {
         listUpdate(item);
-        console.log(item);
+        // console.log(item);
       });
   }
 
@@ -70,7 +70,7 @@ function ButtonsBar({
       .then((response) => response.json())
       .then((item) => {
         listUpdate(item);
-        console.log(item);
+        // console.log(item);
       });
   }
 
@@ -113,10 +113,7 @@ function ButtonsBar({
         <img
           id="download"
           alt="download-icon"
-          src={
-            // set both images to true for now. not posting to back end
-            download ? "/Icons/download-true.png" : "/Icons/download-true.png"
-          }
+          src={"/Icons/GPlay.png"}
           // later this window open will work since the real data has https:// in front of the link
           onClick={() => {
             window.open(`${link}`, "_blank");

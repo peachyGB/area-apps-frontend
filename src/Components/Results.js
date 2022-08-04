@@ -12,16 +12,19 @@ function Results({ searchResults, zip, userInt, setUserInt, user }) {
     );
 
   let trueResults = searchResults.filter((result) => {
-    return result.organic_results[0].title !== "Recommended for you";
+    let busName = result.organic_results[0].items[0].author.toLowerCase();
+    let appName = result.organic_results[0].items[0].title.toLowerCase();
+
+    return (
+      result.organic_results[0].title !== "Recommended for you" &&
+      busName.includes("game") === false &&
+      busName.includes("games") === false &&
+      appName.includes("game") === false &&
+      appName.includes("games") === false
+    );
   });
 
-  //  Circle back to this
-  // let noGames = searchResults.filter((result) => {
-  //   return result.organic_results[0].includes("game");
-  // });
-  // console.log(noGames);
-
-  console.log(`Full results:`, searchResults);
+  // console.log(`Full results:`, searchResults);
   console.log(`True results:`, trueResults);
 
   let businessBoys = trueResults.map((item) => (

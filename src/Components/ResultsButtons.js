@@ -26,7 +26,7 @@ function ResultsButtons({
       bookmark: { rBookmark },
     };
 
-    fetch(`/${user.id}/interactions/${appName}`, {
+    fetch(`http://localhost:3000/users/${user.id}/interactions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ function ResultsButtons({
       .then((response) => response.json())
       .then((item) => {
         updateUserInfo(item);
-        console.log(item);
+        // console.log(item);
       });
   }
 
@@ -99,11 +99,7 @@ function ResultsButtons({
         <img
           id="download"
           alt="download-icon"
-          src={
-            "/Icons/download-false.png"
-            // set both images to true for now. not posting to back end
-            // download ? "/Icons/download-true.png" : "/Icons/download-true.png"
-          }
+          src={"/Icons/GPlay.png"}
           onClick={() => {
             window.open(`${playStore}`, "_blank");
           }}

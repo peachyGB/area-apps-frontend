@@ -33,6 +33,48 @@
   border-style: inset;
   border-left: 0px;
 }
+.group-label {
+  font-size: large;
+  font-weight: 500;
+}
+.search-filters {
+  display: inline-flex;
+  margin: 3px;
+  width: 110px;
+  height: 35px;
+  position: relative;
+  font-size: small;
+}
+
+.search-filters label,
+.search-filters input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+}
+
+.search-filters input[type="radio"] {
+  opacity: 0.011;
+  z-index: 100;
+}
+
+.search-filters input[type="radio"]:checked + label {
+  background: #0d6dfd7e;
+  border-radius: 12px;
+  font-size: small;
+}
+
+.search-filters label {
+  cursor: pointer;
+  z-index: 90;
+  line-height: 1.8em;
+  font-size: small;
+}
+
 /* RESULTS */
 #loading {
   border-radius: 100%;
@@ -51,11 +93,11 @@
   color: white;
   text-align: left;
   text-shadow: 2px 2px 2px rgb(1, 7, 41);
-  background-color: #09112a;
+  background-color: #09112ad2;
   padding: 30px;
   margin: 10px;
   border-radius: 12px;
-  width: 900px;
+  width: 700px;
   height: 325px;
   position: relative;
 }
