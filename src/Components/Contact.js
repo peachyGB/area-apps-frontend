@@ -4,10 +4,19 @@ function Contact() {
   const [usersname, setUsersname] = useState("");
   const [email, setEmail] = useState("");
   const [content, setContent] = useState("");
+  const [thanks, setThanks] = useState({ visibility: "hidden" });
+
+  function submit(e) {
+    e.preventDefault();
+    setUsersname("");
+    setEmail("");
+    setContent("");
+    setThanks({ visibility: "visible" });
+  }
 
   return (
     <div>
-      <form id="contact-form">
+      <form id="contact-form" onSubmit={submit}>
         <label htmlFor="username">Username:</label>
         <br />
         <input
@@ -38,6 +47,9 @@ function Contact() {
         <br />
         <input id="contact-submit" type="submit" value="Submit"></input>
       </form>
+      <div id="thankYou" style={thanks}>
+        Thank you for your feedback!
+      </div>
       <br />
       <br />
       <br />

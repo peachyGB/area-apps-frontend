@@ -12,10 +12,6 @@ function ButtonsBar({
 }) {
   const [bookmark, setBookmark] = useState();
   const [error_report, setError_report] = useState();
-  // const [dwnload, setDwnload] = useState();
-  // const [rating, setRating] = useState(0);
-  // const [up, setUp] = useState(false);
-  // const [down, setDown] = useState(false);
 
   let history = useHistory();
   // gonna dry these bad boys up later

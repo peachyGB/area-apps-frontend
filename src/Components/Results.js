@@ -11,9 +11,20 @@ function Results({ searchResults, zip, userInt, setUserInt, user }) {
       </span>
     );
 
+  console.log(searchResults);
   let trueResults = searchResults.filter((result) => {
-    let busName = result.organic_results[0].items[0].author.toLowerCase();
-    let appName = result.organic_results[0].items[0].title.toLowerCase();
+    let busName =
+      result.organic_results[0].items[0].author === undefined
+        ? ""
+        : result.organic_results[0].items[0].author.toLowerCase();
+
+    let appName =
+      result.organic_results[0].items[0].title === undefined
+        ? ""
+        : result.organic_results[0].items[0].title.toLowerCase();
+
+    // let busName = result.organic_results[0].items[0].author.toLowerCase();
+    // let appName = result.organic_results[0].items[0].title.toLowerCase();
 
     return (
       result.organic_results[0].title !== "Recommended for you" &&
