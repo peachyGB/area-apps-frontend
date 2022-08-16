@@ -1,13 +1,28 @@
 import "./App.css";
 import Pages from "./Components/Pages";
 import Header from "./Components/Header";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function App() {
+  const [user, setUser] = useState(0); // <--- user cannot be 0,
+
+  function onLogout() {
+    setUser(0);
+  }
+
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
   return (
     <div className="App">
-      <Header />
-      <Pages />
+      <img id="background" alt="logo-icon" src="/Icons/logo.png" />
+      <Header onLogin={setUser} user={user} onLogout={onLogout} />
+      <Pages setUser={setUser} user={user} />
     </div>
   );
 }
